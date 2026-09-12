@@ -5,8 +5,6 @@ on:
     branches:
       - '**'
 
-  workflow_dispatch:
-
 jobs:
   create-and-upload:
     runs-on: ubuntu-latest
