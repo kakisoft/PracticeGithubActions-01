@@ -1,4 +1,4 @@
-name: Artifact Upload
+name: Upload Artifact
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
       - name: Create file
         run: touch UploadFile01.txt
 
-      - name: Upload artifact
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: upload-file-demo
