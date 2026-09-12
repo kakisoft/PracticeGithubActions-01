@@ -16,7 +16,12 @@ jobs:
       contents: write
 
     steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
       - name: Create Release
-        run: gh release create "${{ inputs.version }}" --generate-notes # inputs.version : ダイアログで入力した値
+        run: gh release create "${{ inputs.version }}" --target main --generate-notes # inputs.version : ダイアログで入力した値
         env:
           GH_TOKEN: ${{ github.token }} # GitHub Actions がそのWorkflow実行用に自動発行してくれる認証トークン。
