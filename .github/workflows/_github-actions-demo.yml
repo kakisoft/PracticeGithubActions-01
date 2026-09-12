@@ -1,0 +1,13 @@
+name: GitHub Actions Demo
+run-name: GitHub Actions Demo - ${{ github.ref_name }}
+
+on:
+  push:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hello
+        run: echo "GitHub Actions is running!"
