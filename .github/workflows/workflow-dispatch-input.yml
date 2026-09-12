@@ -1,0 +1,17 @@
+name: Workflow Dispatch Input
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: '名前を入力してください'
+        required: true
+        type: string
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Say Hello
+        run: echo "Hello ${{ inputs.name }}"
