@@ -1,4 +1,5 @@
 name: Workflow Dispatch Input
+run-name: Workflow Dispatch Input - ${{ github.ref_name }}
 
 on:
   workflow_dispatch:

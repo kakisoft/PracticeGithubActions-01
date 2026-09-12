@@ -1,4 +1,5 @@
 name: Artifact Upload
+run-name: Artifact Upload - ${{ github.ref_name }}
 
 on:
   push:
