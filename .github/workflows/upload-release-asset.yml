@@ -1,0 +1,25 @@
+name: Upload Release Asset
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'アップロード先のRelease version（例:v1.0.0）'
+        required: true
+        type: string
+
+jobs:
+  upload-release-asset:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Create file
+        run: touch UploadFile02.txt
+
+      - name: Upload Release Asset
+        run: gh release upload "${{ inputs.version }}" UploadFile02.txt # inputs.version : ダイアログで入力した値
+        env:
+          GH_TOKEN: ${{ github.token }} # GitHub Actions がそのWorkflow実行用に自動発行してくれる認証トークン。
