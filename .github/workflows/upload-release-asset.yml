@@ -22,7 +22,7 @@ jobs:
           ref: main
 
       - name: Create file
-        run: touch UploadFile02.txt
+        run: echo "Hello Release Asset" > UploadFile02.txt
 
       - name: Upload Release Asset
         run: gh release upload "${{ inputs.version }}" UploadFile02.txt # inputs.version : ダイアログで入力した値

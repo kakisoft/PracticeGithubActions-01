@@ -1,0 +1,35 @@
+name: Promote Artifact To Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version（例:v1.0.0）'
+        required: true
+        type: string
+
+      run_id:
+        description: 'Artifactを作成したWorkflow Run ID'
+        required: true
+        type: string
+
+jobs:
+  promote-artifact-to-release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      actions: read
+      contents: write
+
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: upload-file-demo
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ github.token }}
+
+      - name: Upload Release Asset
+        run: gh release upload "${{ inputs.version }}" UploadFile01.txt
+        env:
+          GH_TOKEN: ${{ github.token }}
