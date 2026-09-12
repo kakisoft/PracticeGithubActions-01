@@ -1,0 +1,22 @@
+name: Artifact Upload
+
+on:
+  push:
+    branches:
+      - '**'
+
+  workflow_dispatch:
+
+jobs:
+  create-and-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create file
+        run: touch UploadFile01.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: upload-file-demo
+          path: UploadFile01.txt
